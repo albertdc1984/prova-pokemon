@@ -19,11 +19,15 @@ const StyledFooter = styled.footer`
     }
 `;
 
-export default function Pagination({ previousTwenty, nextTwenty }) {
+export default function Pagination({
+    previousTwenty,
+    nextTwenty,
+    onPagination,
+}) {
     return (
         <StyledFooter>
-            <button onClick={() => console.log(previousTwenty)}>Prev</button>
-            <button onClick={() => console.log(nextTwenty)}>Next</button>
+            <button onClick={() => onPagination(previousTwenty)}>Prev</button>
+            <button onClick={() => onPagination(nextTwenty)}>Next</button>
         </StyledFooter>
     );
 }

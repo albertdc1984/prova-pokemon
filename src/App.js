@@ -56,7 +56,7 @@ function App() {
     };
 
     const pokemonFetch = async (url) => {
-        const res = await fetch("https://pokeapi.co/api/v2/pokemon");
+        const res = await fetch(url);
         const data = await res.json();
         const next = data.next;
         const previous = data.previous;
@@ -68,6 +68,7 @@ function App() {
             return pokemon;
         });
         setPokemonList(await Promise.all(pokePromises));
+        console.log(pokemonList);
         setPreviousTwenty(previous);
         setNextTwenty(next);
     };
@@ -97,6 +98,7 @@ function App() {
                 />
             )}
             <Pagination
+                onPagination={pokemonFetch}
                 previousTwenty={previousTwenty}
                 nextTwenty={nextTwenty}
             />
