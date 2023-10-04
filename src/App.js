@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import PokemonCard from "./components/PokemonCard";
+import PokemonDetail from "./components/PokemonDetail";
 
 const provisionalPoke = {
     results: [
@@ -43,14 +45,29 @@ const provisionalPoke = {
 };
 
 function App() {
+    const [selectedPokemon, setSelectedPokemon] = useState(null);
+
+    const handleUnselectPokemon = () => {
+        setSelectedPokemon(null);
+    };
+
     return (
         <div className="App">
             <Header />
             <section className="poke-list">
                 {provisionalPoke.results.map((pokemon) => (
-                    <PokemonCard pokemon={pokemon} />
+                    <PokemonCard
+                        pokemon={pokemon}
+                        onSelectPokemon={setSelectedPokemon}
+                    />
                 ))}
             </section>
+            {selectedPokemon && (
+                <PokemonDetail
+                    pokemon={selectedPokemon}
+                    onUnselectPokemon={handleUnselectPokemon}
+                />
+            )}
         </div>
     );
 }

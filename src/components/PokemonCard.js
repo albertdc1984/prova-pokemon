@@ -16,9 +16,13 @@ const PokeCardContainer = styled.div`
         text-transform: uppercase;
     }
 `;
-export default function PokemonCard({ pokemon }) {
+
+export default function PokemonCard({ pokemon, onSelectPokemon }) {
     return (
-        <PokeCardContainer>
+        <PokeCardContainer
+            onClick={() => onSelectPokemon(pokemon)}
+            key={pokemon.sprites.front_default}
+        >
             <img
                 src={pokemon.sprites.front_default}
                 alt={`${pokemon.name} front`}

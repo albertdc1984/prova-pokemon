@@ -8,3 +8,6 @@ body {
     background-color: #ffcb05;
     font-family: "Pixelify Sans", cursive;
 }
+.App {
+    position: relative;
+}

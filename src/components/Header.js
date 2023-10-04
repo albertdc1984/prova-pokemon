@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
     margin: 0;
-    height: 10vh;
+    height: 3.5rem;
     background-color: #295da3;
     font-size: large;
     padding: 20px;
@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
         transform: translate(-50%);
     }
 `;
+
 export default function Header() {
     return (
         <StyledHeader>
