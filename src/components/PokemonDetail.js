@@ -20,6 +20,15 @@ const StyledPokeDetail = styled.div`
         font-size: 2rem;
         color: #ff9800;
     }
+    button {
+        padding: 5px;
+        margin: 10px;
+        font-family: "Press Start 2P", cursive;
+        border-radius: 5px;
+        border-color: #ff9800;
+        background-color: #ffcb05;
+        color: #295da3;
+    }
 `;
 
 export default function PokemonDetail({ pokemon, onUnselectPokemon }) {
