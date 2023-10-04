@@ -1,4 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    color: darkblue;
-    background-color: goldenrod;
+    color: #295da3;
+    background-color: #ffcb05;
+    font-family: "Pixelify Sans", cursive;
 }

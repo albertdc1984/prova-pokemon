@@ -1,4 +1,5 @@
 import "./App.css";
+import Header from "./components/Header";
 
 const provisionalPoke = {
     results: [
@@ -43,7 +44,7 @@ const provisionalPoke = {
 function App() {
     return (
         <div className="App">
-            <header className="App-header">PokeList</header>
+            <Header />
             <section className="poke-list">
                 {provisionalPoke.results.map((pokemon) => (
                     <div key={pokemon.sprites.front_default}>
