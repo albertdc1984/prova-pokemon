@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const StyledPokeDetail = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-width: 50vw;
     background-color: #295da395;
-    top: 60%;
+    top: 20vh;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
     border: solid 10px #ff9800;
     border-radius: 10px;
     img {

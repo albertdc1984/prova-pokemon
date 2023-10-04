@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import PokemonCard from "./components/PokemonCard";
 import PokemonDetail from "./components/PokemonDetail";
+import Pagination from "./components/Pagination";
 
-const provisionalPoke = {
+/* const provisionalPoke = {
     results: [
         {
             name: "blastoise",
@@ -42,32 +43,63 @@ const provisionalPoke = {
             },
         },
     ],
-};
+}; */
 
 function App() {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [pokemonList, setPokemonList] = useState([]);
+    const [previousTwenty, setPreviousTwenty] = useState(null);
+    const [nextTwenty, setNextTwenty] = useState(null);
 
     const handleUnselectPokemon = () => {
         setSelectedPokemon(null);
     };
 
+    const pokemonFetch = async (url) => {
+        const res = await fetch("https://pokeapi.co/api/v2/pokemon");
+        const data = await res.json();
+        const next = data.next;
+        const previous = data.previous;
+        const results = data.results;
+
+        const pokePromises = results.map(async ({ url }) => {
+            const pokemonData = await fetch(url);
+            const pokemon = await pokemonData.json();
+            return pokemon;
+        });
+        setPokemonList(await Promise.all(pokePromises));
+        setPreviousTwenty(previous);
+        setNextTwenty(next);
+    };
+
+    useEffect(
+        () => async () => {
+            await pokemonFetch("https://pokeapi.co/api/v2/pokemon");
+        },
+        []
+    );
+
     return (
         <div className="App">
             <Header />
-            <section className="poke-list">
-                {provisionalPoke.results.map((pokemon) => (
+            <ul className="poke-list">
+                {pokemonList.map((pokemon) => (
                     <PokemonCard
                         pokemon={pokemon}
                         onSelectPokemon={setSelectedPokemon}
                     />
                 ))}
-            </section>
+            </ul>
             {selectedPokemon && (
                 <PokemonDetail
                     pokemon={selectedPokemon}
                     onUnselectPokemon={handleUnselectPokemon}
                 />
             )}
+            <Pagination
+                previousTwenty={previousTwenty}
+                nextTwenty={nextTwenty}
+            />
         </div>
     );
 }

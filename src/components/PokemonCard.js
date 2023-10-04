@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const PokeCardContainer = styled.div`
+const PokeCardContainer = styled.li`
     background-color: #ffcb05;
     border-radius: 10px;
     height: 150px;
@@ -21,11 +21,12 @@ export default function PokemonCard({ pokemon, onSelectPokemon }) {
     return (
         <PokeCardContainer
             onClick={() => onSelectPokemon(pokemon)}
-            key={pokemon.sprites.front_default}
+            key={pokemon.name}
         >
             <img
                 src={pokemon.sprites.front_default}
                 alt={`${pokemon.name} front`}
+                key={pokemon.name}
             />
             <p>{pokemon.name}</p>
         </PokeCardContainer>
