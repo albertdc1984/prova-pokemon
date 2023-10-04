@@ -1,5 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
+import PokemonCard from "./components/PokemonCard";
 
 const provisionalPoke = {
     results: [
@@ -47,13 +48,7 @@ function App() {
             <Header />
             <section className="poke-list">
                 {provisionalPoke.results.map((pokemon) => (
-                    <div key={pokemon.sprites.front_default}>
-                        <img
-                            src={pokemon.sprites.front_default}
-                            alt={`${pokemon.name} front`}
-                        />
-                        <p>{pokemon.name}</p>
-                    </div>
+                    <PokemonCard pokemon={pokemon} />
                 ))}
             </section>
         </div>
