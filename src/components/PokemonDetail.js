@@ -14,11 +14,14 @@ const StyledPokeDetail = styled.div`
     border-radius: 10px;
     img {
         width: 80%;
+        border-radius: 10px;
+        margin: 10px;
     }
     p {
         text-transform: uppercase;
-        font-size: 2rem;
+        font-size: 1rem;
         color: #ff9800;
+        margin: 10px;
     }
     button {
         padding: 5px;
@@ -35,7 +38,11 @@ export default function PokemonDetail({ pokemon, onUnselectPokemon }) {
     return (
         <StyledPokeDetail>
             <img
-                src={pokemon.sprites.front_default}
+                src={
+                    pokemon.sprites.front_default
+                        ? pokemon.sprites.front_default
+                        : "images/knuk.gif"
+                }
                 alt={`${pokemon.name} front`}
             />
             <p>{pokemon.name}</p>

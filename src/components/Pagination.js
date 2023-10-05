@@ -19,6 +19,7 @@ const StyledFooter = styled.footer`
         border-color: #ff9800;
         background-color: #ffcb05;
         color: #295da3;
+        cursor: pointer;
     }
 `;
 
@@ -26,11 +27,33 @@ export default function Pagination({
     previousTwenty,
     nextTwenty,
     onPagination,
+    setFirstPokemon,
+    setLastPokemon,
 }) {
     return (
         <StyledFooter>
-            <button onClick={() => onPagination(previousTwenty)}>Prev</button>
-            <button onClick={() => onPagination(nextTwenty)}>Next</button>
+            {previousTwenty && (
+                <button
+                    onClick={() => {
+                        onPagination(previousTwenty);
+                        setFirstPokemon((f) => f - 20);
+                        setLastPokemon((l) => l - 20);
+                    }}
+                >
+                    Prev
+                </button>
+            )}
+            {nextTwenty && (
+                <button
+                    onClick={() => {
+                        onPagination(nextTwenty);
+                        setFirstPokemon((f) => f + 20);
+                        setLastPokemon((l) => l + 20);
+                    }}
+                >
+                    Next
+                </button>
+            )}
         </StyledFooter>
     );
 }

@@ -15,6 +15,11 @@ const PokeCardContainer = styled.li`
     p {
         text-transform: uppercase;
     }
+    img {
+        height: 90%;
+        border-radius: 5px;
+        margin: 5px;
+    }
 `;
 
 export default function PokemonCard({ pokemon, onSelectPokemon }) {
@@ -24,7 +29,11 @@ export default function PokemonCard({ pokemon, onSelectPokemon }) {
             key={pokemon.name}
         >
             <img
-                src={pokemon.sprites.front_default}
+                src={
+                    pokemon.sprites.front_default
+                        ? pokemon.sprites.front_default
+                        : "images/knuk.gif"
+                }
                 alt={`${pokemon.name} front`}
                 key={pokemon.name}
             />
