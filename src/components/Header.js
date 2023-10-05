@@ -7,6 +7,7 @@ const StyledHeader = styled.header`
     font-size: large;
     position: fixed;
     top: 0;
+    z-index: 2;
     div {
         width: 100vw;
         position: relative;

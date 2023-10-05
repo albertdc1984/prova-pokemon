@@ -2,20 +2,23 @@ import styled from "styled-components";
 
 const StyledPokeDetail = styled.div`
     position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 50vw;
+    width: 100vw;
+    height: 100vh;
     background-color: #295da395;
-    top: 20vh;
-    left: 50%;
-    transform: translateX(-50%);
-    border: solid 10px #ff9800;
-    border-radius: 10px;
+    padding-top: 5.5rem;
+
     img {
-        width: 80%;
+        width: 35rem;
         border-radius: 10px;
         margin: 10px;
+
+        @media screen and (max-width: 600px) {
+            width: 80%;
+        }
     }
     p {
         text-transform: uppercase;
