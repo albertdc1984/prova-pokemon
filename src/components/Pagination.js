@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 const StyledFooter = styled.footer`
     margin: 0;
+    width: 100vw;
     height: 3.5rem;
     background-color: #295da3;
     font-size: large;
-    position: relative;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
+    z-index: 2;
     button {
         padding: 5px;
         margin: 10px;

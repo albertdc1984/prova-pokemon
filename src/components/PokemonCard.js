@@ -3,7 +3,7 @@ import styled from "styled-components";
 const PokeCardContainer = styled.li`
     background-color: #ffcb05;
     border-radius: 10px;
-    height: 150px;
+    height: 90px;
     margin: 5px 5px 0 5px;
     border: solid 5px #ff980078;
     display: flex;

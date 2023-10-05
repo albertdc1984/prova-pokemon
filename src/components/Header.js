@@ -5,11 +5,15 @@ const StyledHeader = styled.header`
     height: 3.5rem;
     background-color: #295da3;
     font-size: large;
-    padding: 20px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    div {
+        width: 100vw;
+        position: relative;
+    }
     img {
         position: absolute;
-        bottom: -25px;
+        bottom: -90px;
         left: 50%;
         transform: translate(-50%);
     }
@@ -18,7 +22,9 @@ const StyledHeader = styled.header`
 export default function Header() {
     return (
         <StyledHeader>
-            <img src="images/pokemon.png" alt="Pokemon" />
+            <div>
+                <img src="images/pokemon.png" alt="Pokemon" />
+            </div>
         </StyledHeader>
     );
 }
