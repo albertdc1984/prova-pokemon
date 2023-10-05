@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const PokeCardContainer = styled.li`
+const PokeCardContainer = styled.div`
     background-color: #ffcb05;
     border-radius: 10px;
     height: 90px;
@@ -19,6 +19,13 @@ const PokeCardContainer = styled.li`
         height: 90%;
         border-radius: 5px;
         margin: 5px;
+        filter: drop-shadow(-5px 7px 5px rgba(0, 0, 0, 0.3));
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.1) translateY(-2px);
+        }
     }
 `;
 

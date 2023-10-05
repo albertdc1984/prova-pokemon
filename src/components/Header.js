@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
     position: fixed;
     top: 0;
     z-index: 2;
+    box-shadow: 0px 7px 5px -1px rgba(0, 0, 0, 0.3);
     div {
         width: 100vw;
         position: relative;
@@ -17,6 +18,7 @@ const StyledHeader = styled.header`
         bottom: -90px;
         left: 50%;
         transform: translate(-50%);
+        filter: drop-shadow(-5px 7px 5px rgba(0, 0, 0, 0.3));
     }
 `;
 

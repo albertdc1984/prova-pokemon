@@ -6,6 +6,7 @@ const StyledCounter = styled.div`
     width: 100vw;
     background-color: white;
     padding: 5px;
+    box-shadow: 0px -7px 5px -1px rgba(0, 0, 0, 0.3);
     p {
         font-size: 0.7rem;
         text-align: end;
@@ -21,7 +22,7 @@ export default function PokeCounter({
         <StyledCounter>
             <p>
                 Showing {firstPokemon}/
-                {lastPokemon == 1300 ? 1292 : lastPokemon} of {totalPokemon}
+                {lastPokemon === 1300 ? 1292 : lastPokemon} of {totalPokemon}
             </p>
         </StyledCounter>
     );

@@ -8,13 +8,27 @@ const StyledPokeDetail = styled.div`
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #295da395;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+        254deg,
+        rgba(255, 255, 255, 1) 1%,
+        rgba(255, 255, 255, 1) 24%,
+        rgba(0, 117, 255, 1) 26%,
+        rgba(255, 255, 255, 1) 28%,
+        rgba(0, 76, 187, 1) 32%,
+        rgba(4, 140, 207, 1) 47%,
+        rgba(0, 168, 255, 1) 57%,
+        rgba(255, 255, 255, 1) 63%,
+        rgba(0, 106, 196, 1) 64%,
+        rgba(255, 255, 255, 1) 68%
+    );
     padding-top: 5.5rem;
 
     img {
         width: 35rem;
         border-radius: 10px;
         margin: 10px;
+        filter: drop-shadow(-5px 7px 5px rgba(0, 0, 0, 0.3));
 
         @media screen and (max-width: 600px) {
             width: 80%;

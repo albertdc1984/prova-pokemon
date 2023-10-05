@@ -29,7 +29,6 @@ function App() {
         const next = data.next;
         const previous = data.previous;
         const results = data.results;
-        console.log(data);
         setTotalPokemon(data.count);
 
         const pokePromises = results.map(async ({ url }) => {
@@ -41,7 +40,6 @@ function App() {
         setPreviousTwenty(previous);
         setNextTwenty(next);
         setIsLoading(false);
-        console.log(pokemonList);
     };
 
     useEffect(
@@ -60,10 +58,12 @@ function App() {
             ) : (
                 <PokemonList>
                     {pokemonList.map((pokemon) => (
-                        <PokemonCard
-                            pokemon={pokemon}
-                            onSelectPokemon={setSelectedPokemon}
-                        />
+                        <li key={pokemon.name}>
+                            <PokemonCard
+                                pokemon={pokemon}
+                                onSelectPokemon={setSelectedPokemon}
+                            />
+                        </li>
                     ))}
                 </PokemonList>
             )}

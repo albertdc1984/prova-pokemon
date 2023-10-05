@@ -3,6 +3,7 @@ import styled from "styled-components";
 const PokemonUl = styled.ul`
     padding: 100px 10px 100px 10px;
     display: grid;
+    list-style: none;
 
     @media (min-width: 320px) and (max-width: 480px) {
         grid-template-columns: 1fr;
