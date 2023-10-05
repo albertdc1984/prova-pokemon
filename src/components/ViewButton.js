@@ -8,12 +8,12 @@ const ViewStyledButton = styled.button`
     right: 0;
     .svg {
         width: 30px;
-        margin: 10px;
+        margin: 14px;
         filter: brightness(0) saturate(100%) invert(79%) sepia(87%)
             saturate(2690%) hue-rotate(346deg) brightness(96%) contrast(110%);
     }
 
-    @media (min-width: 320px) and (max-width: 480px) {
+    @media (min-width: 0px) and (max-width: 480px) {
         display: none;
     }
 `;
