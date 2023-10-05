@@ -9,7 +9,11 @@ const PokemonUl = styled.ul`
         grid-template-columns: 1fr;
     }
 
-    @media (min-width: 481px) and (max-width: 1024px) {
+    @media (min-width: 481px) and (max-width: 780px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @media (min-width: 780px) and (max-width: 1024px) {
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -17,6 +21,10 @@ const PokemonUl = styled.ul`
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 `;
-export default function PokemonList({ children }) {
-    return <PokemonUl>{children}</PokemonUl>;
+export default function PokemonList({ listView, children }) {
+    return (
+        <PokemonUl className={listView ? "list-view" : ""}>
+            {children}
+        </PokemonUl>
+    );
 }

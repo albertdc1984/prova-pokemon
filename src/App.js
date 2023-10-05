@@ -7,6 +7,7 @@ import Pagination from "./components/Pagination";
 import PokemonList from "./components/PokemonList";
 import Loader from "./components/Loader";
 import PokeCounter from "./components/Counter";
+import ViewButton from "./components/ViewButton";
 
 function App() {
     const [selectedPokemon, setSelectedPokemon] = useState(null);
@@ -17,30 +18,11 @@ function App() {
     const [totalPokemon, setTotalPokemon] = useState("0");
     const [lastPokemon, setLastPokemon] = useState(20);
     const [firstPokemon, setFirstPokemon] = useState(lastPokemon - 20);
+    const [listView, setListView] = useState(false);
 
     const handleUnselectPokemon = () => {
         setSelectedPokemon(null);
     };
-
-    /* const pokemonFetch = async (url) => {
-        setIsLoading(true);
-        const res = await fetch(url);
-        const data = await res.json();
-        const next = data.next;
-        const previous = data.previous;
-        const results = data.results;
-        setTotalPokemon(data.count);
-
-        const pokePromises = results.map(async ({ url }) => {
-            const pokemonData = await fetch(url);
-            const pokemon = await pokemonData.json();
-            return pokemon;
-        });
-        setPokemonList(await Promise.all(pokePromises));
-        setPreviousTwenty(previous);
-        setNextTwenty(next);
-        setIsLoading(false);
-    }; */
 
     const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
 
@@ -69,12 +51,14 @@ function App() {
 
     return (
         <div className="App">
-            <Header />
+            <Header>
+                <ViewButton listView={listView} setListView={setListView} />
+            </Header>
 
             {isLoading ? (
                 <Loader />
             ) : (
-                <PokemonList>
+                <PokemonList listView={listView}>
                     {pokemonList.map((pokemon) => (
                         <li key={pokemon.name}>
                             <PokemonCard
@@ -104,6 +88,7 @@ function App() {
                             setFirstPokemon((f) => f - 20);
                             setLastPokemon((l) => l - 20);
                         }}
+                        disabled={isLoading}
                     >
                         Prev
                     </button>
@@ -115,6 +100,7 @@ function App() {
                             setFirstPokemon((f) => f + 20);
                             setLastPokemon((l) => l + 20);
                         }}
+                        disabled={isLoading}
                     >
                         Next
                     </button>
