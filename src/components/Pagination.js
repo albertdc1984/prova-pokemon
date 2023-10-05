@@ -10,7 +10,7 @@ const StyledFooter = styled.footer`
     bottom: 0;
     display: flex;
     justify-content: center;
-    z-index: 2;
+    z-index: 1;
     button {
         padding: 5px;
         margin: 10px;

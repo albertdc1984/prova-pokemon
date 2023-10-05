@@ -23,6 +23,7 @@ const StyledPokeDetail = styled.div`
         rgba(255, 255, 255, 1) 68%
     );
     padding-top: 5.5rem;
+    z-index: 2;
 
     img {
         width: 35rem;

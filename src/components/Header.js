@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
     font-size: large;
     position: fixed;
     top: 0;
-    z-index: 2;
+    z-index: 3;
     box-shadow: 0px 7px 5px -1px rgba(0, 0, 0, 0.3);
     div {
         width: 100vw;
