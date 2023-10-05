@@ -22,7 +22,7 @@ function App() {
         setSelectedPokemon(null);
     };
 
-    const pokemonFetch = async (url) => {
+    /* const pokemonFetch = async (url) => {
         setIsLoading(true);
         const res = await fetch(url);
         const data = await res.json();
@@ -40,14 +40,32 @@ function App() {
         setPreviousTwenty(previous);
         setNextTwenty(next);
         setIsLoading(false);
-    };
+    }; */
 
-    useEffect(
-        () => async () => {
-            await pokemonFetch("https://pokeapi.co/api/v2/pokemon");
-        },
-        []
-    );
+    const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
+
+    useEffect(() => {
+        const pokemonFetch = async (url) => {
+            setIsLoading(true);
+            const res = await fetch(url);
+            const data = await res.json();
+            const next = data.next;
+            const previous = data.previous;
+            const results = data.results;
+            setTotalPokemon(data.count);
+
+            const pokePromises = results.map(async ({ url }) => {
+                const pokemonData = await fetch(url);
+                const pokemon = await pokemonData.json();
+                return pokemon;
+            });
+            setPokemonList(await Promise.all(pokePromises));
+            setPreviousTwenty(previous);
+            setNextTwenty(next);
+            setIsLoading(false);
+        };
+        pokemonFetch(url);
+    }, [url]);
 
     return (
         <div className="App">
@@ -78,13 +96,30 @@ function App() {
                 lastPokemon={lastPokemon}
                 totalPokemon={totalPokemon}
             />
-            <Pagination
-                onPagination={pokemonFetch}
-                previousTwenty={previousTwenty}
-                nextTwenty={nextTwenty}
-                setLastPokemon={setLastPokemon}
-                setFirstPokemon={setFirstPokemon}
-            />
+            <Pagination>
+                {previousTwenty && (
+                    <button
+                        onClick={() => {
+                            setUrl(previousTwenty);
+                            setFirstPokemon((f) => f - 20);
+                            setLastPokemon((l) => l - 20);
+                        }}
+                    >
+                        Prev
+                    </button>
+                )}
+                {nextTwenty && (
+                    <button
+                        onClick={() => {
+                            setUrl(nextTwenty);
+                            setFirstPokemon((f) => f + 20);
+                            setLastPokemon((l) => l + 20);
+                        }}
+                    >
+                        Next
+                    </button>
+                )}
+            </Pagination>
         </div>
     );
 }

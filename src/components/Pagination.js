@@ -23,37 +23,6 @@ const StyledFooter = styled.footer`
     }
 `;
 
-export default function Pagination({
-    previousTwenty,
-    nextTwenty,
-    onPagination,
-    setFirstPokemon,
-    setLastPokemon,
-}) {
-    return (
-        <StyledFooter>
-            {previousTwenty && (
-                <button
-                    onClick={() => {
-                        onPagination(previousTwenty);
-                        setFirstPokemon((f) => f - 20);
-                        setLastPokemon((l) => l - 20);
-                    }}
-                >
-                    Prev
-                </button>
-            )}
-            {nextTwenty && (
-                <button
-                    onClick={() => {
-                        onPagination(nextTwenty);
-                        setFirstPokemon((f) => f + 20);
-                        setLastPokemon((l) => l + 20);
-                    }}
-                >
-                    Next
-                </button>
-            )}
-        </StyledFooter>
-    );
+export default function Pagination({ children }) {
+    return <StyledFooter>{children}</StyledFooter>;
 }
