@@ -1,27 +1,3 @@
-/* class RegisteredUser {
-  constructor(services = []) {
-    this.services = services;
-  }
-
-  getTotal() {
-    let total = 0;
-    this.services.forEach(service, (index) => {
-      let multimediaContent = service.getMultimediaContent();
-
-      if (typeof service == StreamingService) {
-        total += multimediaContent.streamingPrice;
-      } else if (typeof service == DownloadService) {
-        total += multimediaContent.downloadPrice;
-      }
-
-      if (typeof multimediaContent == PremiumContent) {
-        total += multimediaContent.additionalFee;
-      }
-    });
-    return total;
-  }
-} */
-
 //Canviar els == per ===
 //subsitutïr index per service a la callback del forEach
 //typeof és un operador que ens diu el tipus del valor d'un operand, no el nom d'una classe o objecte
@@ -34,7 +10,9 @@ class MultimediaContentClass {
         downloadPrice = 0.0,
         duration = 60,
         adult = false,
-        size = 0
+        size = 0,
+        additionalFee = 0,
+        premiumContent = false
     ) {
         this.title = title;
         this.streamingPrice = streamingPrice;
@@ -42,22 +20,18 @@ class MultimediaContentClass {
         this.duration = duration;
         this.adult = adult;
         this.size = size;
-        title();
-        streamingPrice();
-        downloadPrice();
-        duration();
-        adult();
-        size();
+        this.additionalFee = additionalFee;
+        this.premiumContent = premiumContent;
     }
 
     title() {
         return this.title;
     }
     streamingPrice() {
-        if (this.streamingPrice) return this.streamingPrice;
+        return this.streamingPrice;
     }
     downloadPrice() {
-        if (this.downloadPrice) return this.downloadPrice;
+        return this.downloadPrice;
     }
     duration() {
         return this.duration;
@@ -67,6 +41,13 @@ class MultimediaContentClass {
     }
     size() {
         return this.size;
+    }
+    additionalFee() {
+        if (!this.premiumContent) return;
+        return this.additionalFee;
+    }
+    premiumContent() {
+        return this.premiumContent;
     }
 }
 
@@ -79,7 +60,6 @@ class Service {
         this.timestamp = timestamp;
         this.MultimediaContent = MultimediaContent;
         this.type = type;
-        this.getMultimediaContent();
     }
 
     getMultimediaContent() {
@@ -93,7 +73,6 @@ class Service {
 class RegisteredUser {
     constructor(services = []) {
         this.services = services;
-        this.getTotal();
     }
 
     getTotal() {
@@ -102,15 +81,42 @@ class RegisteredUser {
             let multimediaContent = service.getMultimediaContent();
 
             if (service.type === "StreamingService") {
-                total += multimediaContent.streamingPrice();
+                total += multimediaContent.streamingPrice;
             } else if (service.type === "DownloadService") {
-                total += multimediaContent.downloadPrice();
+                total += multimediaContent.downloadPrice;
             }
 
-            if (multimediaContent.type === "PremiumContent") {
-                total += multimediaContent.additionalFee();
+            if (multimediaContent.premiumContent) {
+                total += multimediaContent.additionalFee;
             }
         });
         return total;
     }
 }
+const streamingtestMovie = new MultimediaContentClass(
+    "Test",
+    33.0,
+    35.0,
+    30,
+    true,
+    360,
+    20,
+    true
+);
+const downloadtestMovie = new MultimediaContentClass(
+    "Test2",
+    35.0,
+    36.0,
+    30,
+    true,
+    360,
+    0,
+    false
+);
+const serviceList = [
+    new Service(30, streamingtestMovie, "StreamingService"),
+    new Service(30, downloadtestMovie, "DownloadService"),
+];
+const testUser = new RegisteredUser(serviceList);
+
+console.log(testUser.getTotal());
