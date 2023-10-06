@@ -24,7 +24,7 @@ const StyledHeader = styled.header`
 
 export default function Header({ children }) {
     return (
-        <StyledHeader>
+        <StyledHeader data-testid="header">
             <div className="title-container">
                 <img src="images/pokemon.png" alt="Pokemon" />
             </div>

@@ -34,6 +34,7 @@ export default function PokemonCard({ pokemon, onSelectPokemon }) {
         <PokeCardContainer
             onClick={() => onSelectPokemon(pokemon)}
             key={pokemon.name}
+            data-testid="pokecard"
         >
             <img
                 src={

@@ -24,6 +24,10 @@ function App() {
         setSelectedPokemon(null);
     };
 
+    const handleSetView = () => {
+        setListView(!listView);
+    };
+
     const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
 
     useEffect(() => {
@@ -47,12 +51,13 @@ function App() {
             setIsLoading(false);
         };
         pokemonFetch(url);
+        console.log(pokemonList);
     }, [url]);
 
     return (
         <div className="App">
             <Header>
-                <ViewButton listView={listView} setListView={setListView} />
+                <ViewButton listView={listView} onSetView={handleSetView} />
             </Header>
 
             {isLoading ? (

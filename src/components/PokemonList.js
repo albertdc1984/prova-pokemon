@@ -23,7 +23,10 @@ const PokemonUl = styled.ul`
 `;
 export default function PokemonList({ listView, children }) {
     return (
-        <PokemonUl className={listView ? "list-view" : ""}>
+        <PokemonUl
+            className={listView ? "list-view" : ""}
+            data-testid="pokemonlist"
+        >
             {children}
         </PokemonUl>
     );

@@ -19,7 +19,7 @@ export default function PokeCounter({
     totalPokemon,
 }) {
     return (
-        <StyledCounter>
+        <StyledCounter data-testid="counter">
             <p>
                 Showing {firstPokemon}/
                 {lastPokemon === 1300 ? 1292 : lastPokemon} of {totalPokemon}

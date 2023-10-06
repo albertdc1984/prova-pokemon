@@ -12,7 +12,7 @@ const StyledLoader = styled.div`
 
 export default function Loader() {
     return (
-        <StyledLoader>
+        <StyledLoader data-testid="loader">
             <div>
                 <img src="images/4tym.gif" alt="Pokemon" />
                 <p>LOADING...</p>

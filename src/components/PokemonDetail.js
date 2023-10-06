@@ -51,12 +51,13 @@ const StyledPokeDetail = styled.div`
         border-color: #ff9800;
         background-color: #ffcb05;
         color: #295da3;
+        cursor: pointer;
     }
 `;
 
 export default function PokemonDetail({ pokemon, onUnselectPokemon }) {
     return (
-        <StyledPokeDetail>
+        <StyledPokeDetail data-testid="pokedetail">
             <img
                 src={
                     pokemon.sprites.front_default

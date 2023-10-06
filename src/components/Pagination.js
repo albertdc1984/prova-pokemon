@@ -24,5 +24,5 @@ const StyledFooter = styled.footer`
 `;
 
 export default function Pagination({ children }) {
-    return <StyledFooter>{children}</StyledFooter>;
+    return <StyledFooter data-testid="footer">{children}</StyledFooter>;
 }

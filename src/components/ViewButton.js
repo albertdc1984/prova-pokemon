@@ -18,9 +18,9 @@ const ViewStyledButton = styled.button`
     }
 `;
 
-export default function ViewButton({ listView, setListView }) {
+export default function ViewButton({ listView, onSetView }) {
     return (
-        <ViewStyledButton onClick={() => setListView((state) => !state)}>
+        <ViewStyledButton onClick={onSetView} data-testid="viewbutton">
             <img
                 src={
                     listView
