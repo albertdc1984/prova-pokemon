@@ -51,7 +51,6 @@ function App() {
             setIsLoading(false);
         };
         pokemonFetch(url);
-        console.log(pokemonList);
     }, [url]);
 
     return (
