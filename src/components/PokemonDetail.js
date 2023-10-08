@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 const StyledPokeDetail = styled.div`
+    overflow-y: auto;
     position: fixed;
     top: 0;
     display: flex;
